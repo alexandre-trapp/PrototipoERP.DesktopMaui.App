@@ -16,14 +16,14 @@
                     HorizontalOptions="Center" />
                 
                 <Entry 
-                    x:Name="Email" 
-                    Text="{Binding Email}" 
-                    Placeholder="Email" 
+                    x:Name="Usuario" 
+                    Text="{Binding Usuario}" 
+                    Placeholder="Usuário" 
                     PlaceholderColor="Black" 
                     HorizontalOptions="Center"
                     HeightRequest="40"
                     WidthRequest="500"
-                    Keyboard="Email"
+                    Keyboard="Usuario"
                     TextColor="Black"/>
 
                 <Entry 
