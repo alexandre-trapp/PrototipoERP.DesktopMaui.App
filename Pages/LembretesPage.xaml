@@ -1,6 +1,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PrototipoERP.DesktopMaui.LembretesPage"
+             x:Class="PrototipoERP.DesktopMaui.Pages.LembretesPage"
              BackgroundColor="{DynamicResource SecondaryColor}"
              Title="Prototipo ERP">
 

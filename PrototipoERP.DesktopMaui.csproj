@@ -49,13 +49,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\LembretesPage.xaml.cs">
+	  <Compile Update="Pages\LembretesPage.xaml.cs">
 	    <DependentUpon>LembretesPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\LoginPage.xaml.cs">
+	    <DependentUpon>LoginPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\LembretesPage.xaml">
+	  <MauiXaml Update="Pages\LembretesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

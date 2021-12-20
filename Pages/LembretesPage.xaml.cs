@@ -2,12 +2,13 @@
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
 
-namespace PrototipoERP.DesktopMaui
+namespace PrototipoERP.DesktopMaui.Pages
 {
 	public partial class LembretesPage : ContentPage
 	{
-		public LembretesPage()
+		public LembretesPage(string authenticationToken)
 		{
+
 			InitializeComponent();
 		}
 	}

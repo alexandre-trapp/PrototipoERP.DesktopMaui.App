@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
+﻿using PrototipoERP.DesktopMaui.Pages;
 using Application = Microsoft.Maui.Controls.Application;
 
 namespace PrototipoERP.DesktopMaui
@@ -11,7 +9,7 @@ namespace PrototipoERP.DesktopMaui
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new MainPage());
+			MainPage = new LoginPage();
 		}
 	}
 }
