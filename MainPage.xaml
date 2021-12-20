@@ -18,16 +18,16 @@
                 <Entry 
                     x:Name="Usuario" 
                     Text="{Binding Usuario}" 
-                    Placeholder="Usuário" 
+                    Placeholder="Usuario" 
                     PlaceholderColor="Black" 
                     HorizontalOptions="Center"
                     HeightRequest="40"
                     WidthRequest="500"
-                    Keyboard="Usuario"
                     TextColor="Black"/>
 
                 <Entry 
-                    x:Name="Senha" Text="{Binding Senha}" 
+                    x:Name="Senha" 
+                    Text="{Binding Senha}" 
                     Placeholder="Senha" 
                     PlaceholderColor="Black"
                     HorizontalOptions="Center"

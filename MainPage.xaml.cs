@@ -13,6 +13,7 @@ namespace PrototipoERP.DesktopMaui
 
 		private void OnLoginClicked(object sender, EventArgs e)
 		{
+			Console.WriteLine("ronaldo");
 			//SemanticScreenReader.Announce(CounterLabel.Text);
 		}
 	}
