@@ -4,32 +4,38 @@
              BackgroundColor="{DynamicResource SecondaryColor}">
 
     <ScrollView>
-        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto,*"
-              Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
-            
-            <Label 
-                Text="Prototipo ERP"
-                Grid.Row="0"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+        <Frame BackgroundColor="#BF043055" HasShadow="False">
+            <StackLayout Orientation="Vertical" Spacing="10">
+                
+                <Label 
+                    Text="Prototipo ERP"
+                    Grid.Row="0"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
+                    TextColor="White"
+                    HorizontalOptions="Center" />
+                
+                <Entry 
+                    x:Name="Email" 
+                    Text="{Binding Email}" 
+                    Placeholder="Email" 
+                    PlaceholderColor="Black" 
+                    HorizontalOptions="Center"
+                    HeightRequest="40"
+                    WidthRequest="500"
+                    Keyboard="Email"
+                    TextColor="Black"/>
 
-            <Entry 
-                x:Name="Email" 
-                Text="{Binding Email}" 
-                Placeholder="Email" 
-                PlaceholderColor="White" HeightRequest="40" 
-                Keyboard="Email"
-                TextColor="White"/>
-
-            <Entry 
-                x:Name="Senha" Text="{Binding Senha}" 
-                Placeholder="Senha" 
-                PlaceholderColor="White"
-                HeightRequest="40" 
-                IsPassword="True"
-                TextColor="White"/>
-
+                <Entry 
+                    x:Name="Senha" Text="{Binding Senha}" 
+                    Placeholder="Senha" 
+                    PlaceholderColor="Black"
+                    HorizontalOptions="Center"
+                    HeightRequest="40" 
+                    WidthRequest="500"
+                    IsPassword="True"
+                    TextColor="Black"/>
+                
             <Button 
                 Text="Login"
                 FontAttributes="Bold"
@@ -38,13 +44,15 @@
                 Clicked="OnLoginClicked"
                 HorizontalOptions="Center" />
 
-            <Image Grid.Row="4"
+            <Image 
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 WidthRequest="250"
                 HeightRequest="310"
                 HorizontalOptions="Center" />
+                
+            </StackLayout>
+        </Frame>
 
-        </Grid>
     </ScrollView>
 </ContentPage>
