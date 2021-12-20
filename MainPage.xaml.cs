@@ -1,20 +1,22 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
 
 namespace PrototipoERP.DesktopMaui
 {
 	public partial class MainPage : ContentPage
-	{ 
+	{
+
 		public MainPage()
 		{
 			InitializeComponent();
 		}
 
-		private void OnLoginClicked(object sender, EventArgs e)
+
+        private async void OnLoginClicked(object sender, EventArgs e)
 		{
-			Console.WriteLine("ronaldo");
-			//SemanticScreenReader.Announce(CounterLabel.Text);
+			await Navigation.PushAsync(page: new LembretesPage());
 		}
 	}
 }

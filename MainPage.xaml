@@ -1,19 +1,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrototipoERP.DesktopMaui.MainPage"
-             BackgroundColor="{DynamicResource SecondaryColor}">
+             BackgroundColor="{DynamicResource SecondaryColor}"
+             Title="Prototipo ERP">
 
     <ScrollView>
         <Frame BackgroundColor="#BF043055" HasShadow="False">
             <StackLayout Orientation="Vertical" Spacing="10">
-                
-                <Label 
-                    Text="Prototipo ERP"
-                    Grid.Row="0"
-                    SemanticProperties.HeadingLevel="Level1"
-                    FontSize="32"
-                    TextColor="White"
-                    HorizontalOptions="Center" />
                 
                 <Entry 
                     x:Name="Usuario" 
@@ -36,20 +29,19 @@
                     IsPassword="True"
                     TextColor="Black"/>
                 
-            <Button 
-                Text="Login"
-                FontAttributes="Bold"
-                Grid.Row="3"
-                SemanticProperties.Hint="Efetuar login"
-                Clicked="OnLoginClicked"
-                HorizontalOptions="Center" />
+                <Button 
+                    Text="Login"
+                    FontAttributes="Bold"
+                    SemanticProperties.Hint="Efetuar login"
+                    Clicked="OnLoginClicked"
+                    HorizontalOptions="Center" />
 
-            <Image 
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                WidthRequest="250"
-                HeightRequest="310"
-                HorizontalOptions="Center" />
+                <Image 
+                    Source="dotnet_bot.png"
+                    SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                    WidthRequest="250"
+                    HeightRequest="310"
+                    HorizontalOptions="Center" />
                 
             </StackLayout>
         </Frame>
