@@ -1,0 +1,50 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrototipoERP.DesktopMaui.MainPage"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+
+    <ScrollView>
+        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto,*"
+              Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
+            
+            <Label 
+                Text="Prototipo ERP"
+                Grid.Row="0"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Entry 
+                x:Name="Email" 
+                Text="{Binding Email}" 
+                Placeholder="Email" 
+                PlaceholderColor="White" HeightRequest="40" 
+                Keyboard="Email"
+                TextColor="White"/>
+
+            <Entry 
+                x:Name="Senha" Text="{Binding Senha}" 
+                Placeholder="Senha" 
+                PlaceholderColor="White"
+                HeightRequest="40" 
+                IsPassword="True"
+                TextColor="White"/>
+
+            <Button 
+                Text="Login"
+                FontAttributes="Bold"
+                Grid.Row="3"
+                SemanticProperties.Hint="Efetuar login"
+                Clicked="OnLoginClicked"
+                HorizontalOptions="Center" />
+
+            <Image Grid.Row="4"
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                WidthRequest="250"
+                HeightRequest="310"
+                HorizontalOptions="Center" />
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
