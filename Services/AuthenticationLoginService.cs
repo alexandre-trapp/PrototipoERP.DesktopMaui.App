@@ -9,30 +9,25 @@ namespace PrototipoERP.DesktopMaui.Services
 {
     public static class AuthenticationLoginService
     {
-        public static string GetTokenAuthorization(LoginViewModel dadosLogin)
+        public static IRestResponse GetTokenAuthorization(LoginViewModel dadosLogin)
         {
-            const string baseUrl = "https://artesanatosampa.com.br/api/";
-            var restClient = new RestClient(baseUrl);
-            restClient.AddDefaultHeader("Content-Type", "application/json");
+            const string baseUrl = "https://artesanatosampa.com.br/api/auth";
+            var client = new RestClient(baseUrl);
+            
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Content-Type", "application/json");
 
-            var request = new RestRequest();
-            request.AddBody(new UsuarioAuthenticationRequest
-            {
-                Nome = dadosLogin.Usuario, 
-                Senha = dadosLogin.Senha 
-            });
+            var body = JsonConvert.SerializeObject(
+                            new UsuarioAuthenticationRequest
+                            {
+                                Nome = dadosLogin.Usuario,
+                                Senha = dadosLogin.Senha
+                            });
 
-            var response = restClient.ExecuteAsPost(request, "auth");
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
 
-            if (response == null)
-                throw new ArgumentNullException(nameof(response));
-
-            if (!response.IsSuccessful)
-                throw new HttpRequestException($"Error on request - Status = {response.StatusCode.ToString()} - " +
-                    $"{response.StatusDescription} - message: {response.ErrorMessage}");
-
-            var authenticationResponse = JsonConvert.DeserializeObject<AuthenticationResponse>(response.Content);
-            return authenticationResponse.Token;
+            return response;
         }
     }
 }

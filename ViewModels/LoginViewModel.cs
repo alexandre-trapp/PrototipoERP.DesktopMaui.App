@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
+using Newtonsoft.Json;
+using PrototipoERP.DesktopMaui.DTOs;
 using PrototipoERP.DesktopMaui.Services;
 
 namespace PrototipoERP.DesktopMaui.ViewModels
@@ -41,12 +43,33 @@ namespace PrototipoERP.DesktopMaui.ViewModels
 
         public void OnSubmit()
         {
-            _tokenAuthentication = AuthenticationLoginService.GetTokenAuthorization(this);
+            var response = AuthenticationLoginService.GetTokenAuthorization(this);
 
             try
             {
-                if (string.IsNullOrWhiteSpace(_tokenAuthentication))
-                    ExibirAvisoDeLoginInvalido(string.Empty);
+                if (response == null)
+                {
+                    ExibirAvisoDeLoginInvalido("Falha na integração pra autenticar o usuário.");
+                    return;
+                }
+
+                if (!response.IsSuccessful)
+                {
+                    ExibirAvisoDeLoginInvalido($"Falha na integração: Status = {response.StatusCode.ToString()} - " +
+                                               $"{response.StatusDescription} - message: {response.ErrorMessage}");
+
+                    return;
+                }
+
+                var authenticationResponse = JsonConvert.DeserializeObject<AuthenticationResponse>(response.Content);
+
+                if (string.IsNullOrWhiteSpace(authenticationResponse.Token))
+                {
+                    ExibirAvisoDeLoginInvalido("Falha na autenticação, token de acesso vazio ou inválido.");
+                    return;
+                }
+
+                _tokenAuthentication = authenticationResponse.Token;
             }
             catch (Exception e)
             {
