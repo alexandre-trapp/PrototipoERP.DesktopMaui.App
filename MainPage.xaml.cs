@@ -12,7 +12,9 @@ namespace PrototipoERP.DesktopMaui
 			var login = new LoginViewModel();
 			this.BindingContext = login;
 
-			login.ExibirAvisoDeLoginInvalido += () => DisplayAlert("Erro", "Login Inválido, tente novamente", "OK");
+            login.ExibirAvisoDeLoginInvalido += (string message) => DisplayAlert("Erro", !string.IsNullOrEmpty(message) ?
+				$"Login Inválido, tente novamente - {message}" :
+				"Login Inválido, tente novamente", "OK");
 
 			InitializeComponent();
 		}

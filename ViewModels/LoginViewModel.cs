@@ -8,7 +8,7 @@ namespace PrototipoERP.DesktopMaui.ViewModels
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-        public Action ExibirAvisoDeLoginInvalido;
+        public Action<string> ExibirAvisoDeLoginInvalido;
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         
         private string usuario;
@@ -41,10 +41,17 @@ namespace PrototipoERP.DesktopMaui.ViewModels
 
         public void OnSubmit()
         {
-            _tokenAuthentication = AuthotizationLoginService.GetTokenAuthorization(this);
+            _tokenAuthentication = AuthenticationLoginService.GetTokenAuthorization(this);
 
-            if (string.IsNullOrWhiteSpace(_tokenAuthentication))
-                ExibirAvisoDeLoginInvalido();
+            try
+            {
+                if (string.IsNullOrWhiteSpace(_tokenAuthentication))
+                    ExibirAvisoDeLoginInvalido(string.Empty);
+            }
+            catch (Exception e)
+            {
+                ExibirAvisoDeLoginInvalido(e.Message);
+            }
         }
     }
 }
