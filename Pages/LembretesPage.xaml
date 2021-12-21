@@ -4,27 +4,32 @@
              BackgroundColor="{DynamicResource SecondaryColor}"
              Title="Prototipo ERP">
 
-    <StackLayout Orientation="Vertical" Spacing="10">
+    <ScrollView>
+        <Frame BackgroundColor="#BF043055" HasShadow="False">
+            <StackLayout Orientation="Vertical" Spacing="10">
+                
+                <Label 
+                    Text="Lembretes"
+                    FontSize="32"
+                    TextColor="White"
+                    HorizontalOptions="Center" />
 
-        <Label 
-            Text="Lembretes"
-            FontSize="32"
-            TextColor="White"
-            HorizontalOptions="Center" />
+                <ListView x:Name="myListView" VerticalOptions="StartAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Label Text="{Binding Texto}" />
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-        <ListView x:Name="myListView" VerticalOptions="StartAndExpand">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <Label Text="{Binding Texto}" />
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <Button Text="Meus lembretes" Clicked="OnMeuUsuarioClicked" />
 
-        <Button Text="Meus lembretes" Clicked="OnMeuUsuarioClicked" />
+            </StackLayout>
+        </Frame>
 
-    </StackLayout>
+    </ScrollView>
 </ContentPage>
