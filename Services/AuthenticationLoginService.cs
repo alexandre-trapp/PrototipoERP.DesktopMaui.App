@@ -14,7 +14,7 @@ namespace PrototipoERP.DesktopMaui.Services
             const string baseUrl = "https://artesanatosampa.com.br/api/auth";
             var client = new RestClient(baseUrl);
             
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest(Method.POST); 
             request.AddHeader("Content-Type", "application/json");
 
             var body = JsonConvert.SerializeObject(
