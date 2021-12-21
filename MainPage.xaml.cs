@@ -25,7 +25,7 @@ namespace PrototipoERP.DesktopMaui
 
 			if (!string.IsNullOrWhiteSpace(App._tokenAutenticacao))
 			{
-				await Navigation.PushAsync(new LembretesPage(App._tokenAutenticacao), animated: true);
+				await Navigation.PushAsync(new LembretesPage(App._tokenAutenticacao, 1), animated: true);
 			}
 		}
 	}
