@@ -26,7 +26,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Button Text="Meus lembretes" Clicked="OnMeuUsuarioClicked" />
+                <Button Text="Todos os lembretes" Clicked="OnTodosUsuariosClicked" />
 
             </StackLayout>
         </Frame>

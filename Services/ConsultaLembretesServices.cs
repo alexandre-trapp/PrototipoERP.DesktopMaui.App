@@ -21,5 +21,18 @@ namespace PrototipoERP.DesktopMaui.Services
 
             return response;
         }
+
+        public IRestResponse GetTodosOsLembretes()
+        {
+            var client = new RestClient($"https://artesanatosampa.com.br/api/lembretes");
+            var request = new RestRequest(Method.GET);
+
+            request.AddHeader("Authorization", $"Bearer {_authenticationToken}");
+            request.AddHeader("Content-Type", "application/json");
+
+            IRestResponse response = client.Execute(request);
+
+            return response;
+        }
     }
 }
