@@ -9,8 +9,8 @@ namespace PrototipoERP.DesktopMaui.Pages
 		{
 			InitializeComponent();
 
-			//myListView.ItemsSource = AppState.Lembretes;
-			//AppState.Lembretes.Add(new Models.LembreteModel() { UsuarioId = 1, DataHora = DateTime.Now, Texto = "aa" });
+			myListView.ItemsSource = AppState.Lembretes;
+			AppState.Lembretes.Add(new Models.LembreteModel() { UsuarioId = 1, DataHora = DateTime.Now, Texto = "aa" });
 		}
 
         public void OnMeuUsuarioClicked(object sender, EventArgs args)

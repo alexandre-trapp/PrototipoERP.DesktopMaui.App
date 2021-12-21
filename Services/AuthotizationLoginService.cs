@@ -6,7 +6,7 @@ namespace PrototipoERP.DesktopMaui.Services
     {
         public static string GetTokenAuthorization(LoginViewModel dadosLogin)
         {
-            return string.Empty;
+            return "aa"; // string.Empty;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Maui.Controls;
-using PrototipoERP.DesktopMaui.Pages;
 using Application = Microsoft.Maui.Controls.Application;
 
 namespace PrototipoERP.DesktopMaui
@@ -12,16 +11,7 @@ namespace PrototipoERP.DesktopMaui
 		{
 			InitializeComponent();
 
-			if (string.IsNullOrWhiteSpace(_tokenAutenticacao))
-			{
-				MainPage = new NavigationPage(new LoginPage());
-			}
-			else
-			{
-				MainPage = new NavigationPage(new LembretesPage(_tokenAutenticacao));
-			}
-
-			MainPage = new LoginPage();
+			MainPage = new NavigationPage(new MainPage());
 		}
 	}
 }
