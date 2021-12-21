@@ -9,11 +9,5 @@ namespace PrototipoERP.DesktopMaui
 		{
 			InitializeComponent();
 		}
-
-  //      private async void OnLoginClicked(object sender, EventArgs e)
-		//{
-
-		//	await Navigation.PushAsync(page: new LembretesPage(string.Empty));
-		//}
 	}
 }

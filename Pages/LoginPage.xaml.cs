@@ -1,11 +1,11 @@
-﻿using Microsoft.Maui.Controls;
+﻿using System;
+using Microsoft.Maui.Controls;
 using PrototipoERP.DesktopMaui.ViewModels;
 
 namespace PrototipoERP.DesktopMaui.Pages
 {
 	public partial class LoginPage : ContentPage
 	{
-
 		public LoginPage()
 		{
             var login = new LoginViewModel();
@@ -16,10 +16,9 @@ namespace PrototipoERP.DesktopMaui.Pages
 			InitializeComponent();
 		}
 
-  //      private async void OnLoginClicked(object sender, EventArgs e)
-		//{
-
-		//	await Navigation.PushAsync(page: new LembretesPage(string.Empty));
-		//}
-	}
+        private async void OnLoginClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(page: new LembretesPage((this.BindingContext as LoginViewModel)._tokenAuthentication));
+        }
+    }
 }

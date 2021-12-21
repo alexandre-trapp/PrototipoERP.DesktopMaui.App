@@ -1,8 +1,8 @@
-﻿using Microsoft.Maui.Controls;
-using PrototipoERP.DesktopMaui.Services;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
+using Microsoft.Maui.Controls;
+using PrototipoERP.DesktopMaui.Services;
 
 namespace PrototipoERP.DesktopMaui.ViewModels
 {
@@ -23,6 +23,8 @@ namespace PrototipoERP.DesktopMaui.ViewModels
         }
         
         private string senha;
+        public string _tokenAuthentication;
+
         public string Senha
         {
             get { return senha; }
@@ -39,9 +41,9 @@ namespace PrototipoERP.DesktopMaui.ViewModels
 
         public void OnSubmit()
         {
-            var tokenAuthorizationLogin = AuthotizationLoginService.GetTokenAuthorization(this);
+            _tokenAuthentication = AuthotizationLoginService.GetTokenAuthorization(this);
 
-            if (string.IsNullOrWhiteSpace(tokenAuthorizationLogin))
+            if (string.IsNullOrWhiteSpace(_tokenAuthentication))
                 ExibirAvisoDeLoginInvalido();
         }
     }

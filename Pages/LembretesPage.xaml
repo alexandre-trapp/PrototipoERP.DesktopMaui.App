@@ -7,7 +7,7 @@
     <ScrollView>
         <Frame BackgroundColor="#BF043055" HasShadow="False">
             <StackLayout Orientation="Vertical" Spacing="10">
-                
+
                 <Label 
                     Text="Lembretes"
                     FontSize="32"
@@ -19,13 +19,14 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
-                                    <Label Text="Ronaldo" />
+                                    <Label Text="{Binding Texto}" />
                                 </ViewCell.View>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
+                <Button Text="Ver lembretes do meu usuário" Clicked="OnMeuUsuarioClicked"></Button>
+                <Button Text="Ver lembretes de todos os usuários" Clicked="OnTodosUsuariosClicked"></Button>
             </StackLayout>
         </Frame>
 
