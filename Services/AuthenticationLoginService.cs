@@ -11,7 +11,7 @@ namespace PrototipoERP.DesktopMaui.Services
     {
         public static IRestResponse GetTokenAuthorization(LoginViewModel dadosLogin)
         {
-            const string baseUrl = "https://artesanatosampa.com.br/api/auth";
+            const string baseUrl = "http://artesanatosampa.com.br/api/auth";
             var client = new RestClient(baseUrl);
             
             var request = new RestRequest(Method.POST); 
