@@ -5,7 +5,7 @@
              Title="Prototipo ERP">
     <ScrollView>
         <Frame BackgroundColor="#BF043055" HasShadow="False">
-            <StackLayout Orientation="Vertical" Spacing="10">
+            <StackLayout Orientation="Vertical" Spacing="10" CompressedLayout.IsHeadless="true">
 
                 <Entry 
                     x:Name="Usuario" 
