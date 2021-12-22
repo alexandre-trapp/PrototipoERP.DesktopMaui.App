@@ -4,43 +4,36 @@
              BackgroundColor="{DynamicResource SecondaryColor}"
              Title="Prototipo ERP">
 
-    <StackLayout>
+    <ScrollView>
+        <Frame BackgroundColor="#BF043055" HasShadow="False">
+            <StackLayout Orientation="Vertical" Spacing="10">
 
-        <Label 
-            Text="Lembretes"
-            FontSize="32"
-            TextColor="White"
-            HorizontalOptions="Center" />
+                <Label 
+                    Text="Lembretes"
+                    FontSize="32"
+                    TextColor="White"
+                    HorizontalOptions="Center" />
 
-        <ListView 
-            x:Name="myListView" 
-            VerticalOptions="Fill" 
-            HasUnevenRows="True"
-            ItemsSource="{Binding Lembretes}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout HeightRequest="120" BackgroundColor="LightBlue" HorizontalOptions="StartAndExpand">
+                <ListView 
+                    x:Name="myListView" 
+                    VerticalOptions="StartAndExpand" 
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding Lembretes}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Label Text="{Binding Texto}" />
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-                            <Grid x:Name="gridLembretes">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                        Grid.Row ="1" Grid.Column="0"
-                                        Text="{Binding Texto}"
-                                        TextColor="White"
-                                        HorizontalOptions="CenterAndExpand">
-                                </Label>
-                                <Button Text="Todos os lembretes" Command="{Binding TodosLembretesCommand}" />
-                            </Grid>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <Button Text="Todos os lembretes" Command="{Binding TodosLembretesCommand}" />
 
+            </StackLayout>
+        </Frame>
 
-    </StackLayout>
+    </ScrollView>
 </ContentPage>
