@@ -9,28 +9,27 @@ using PrototipoERP.DesktopMaui.Services;
 
 namespace PrototipoERP.DesktopMaui.Pages
 {
-    public partial class LembretesPage : ContentPage
+    public partial class TodosLembretesPage : ContentPage
     {
         private readonly long _usuarioId;
         private readonly ConsultaLembretesServices _consultaLembretesService;
 
-        public LembretesPage(string authenticationToken, long usuarioId)
+        public TodosLembretesPage(string authenticationToken)
         {
             InitializeComponent();
 
-            _usuarioId = usuarioId;
             _consultaLembretesService = new ConsultaLembretesServices(authenticationToken);
 
-            LembretesPorUsuario();
+            TodosOsLembretes();
 
             myListView.ItemsSource = AppState.Lembretes;
         }
 
-        private void LembretesPorUsuario()
+        private void TodosOsLembretes()
         {
             AppState.Lembretes = new ObservableCollection<LembreteModel>();
 
-            var response = _consultaLembretesService.GetLembretesPorUsuario(_usuarioId);
+            var response = _consultaLembretesService.GetTodosOsLembretes();
 
             if (response == null)
             {
@@ -47,23 +46,16 @@ namespace PrototipoERP.DesktopMaui.Pages
             }
 
             var lembretes = JsonConvert.DeserializeObject<List<LembreteModel>>(response.Content);
-
             if (lembretes != null && lembretes.Any())
             {
                 lembretes.ForEach(x =>
                     AppState.Lembretes.Add(new LembreteModel()
                     {
-                        Texto = x.Texto,
                         UsuarioId = x.UsuarioId,
-                        Usuario = $"Criado pelo usuário: {App._usuarioLogado}",
-                        CriadoEm = $"Criado em: {x.DataHora:dd/MM/yyyy HH:mm:ss}"
+                        DataHora = x.DataHora,
+                        Texto = x.Texto
                     }));
             }
-        }
-
-        public async void OnTodosUsuariosClicked(object sender, EventArgs args)
-        {
-            await Navigation.PushAsync(new TodosLembretesPage(App._tokenAutenticacao), animated: true);
         }
     }
 }

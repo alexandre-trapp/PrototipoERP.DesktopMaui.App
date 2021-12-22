@@ -54,12 +54,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\TodosLembretesPage.xaml.cs">
+	    <DependentUpon>TodosLembretesPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Pages\LembretesPage.xaml.cs">
 	    <DependentUpon>LembretesPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\TodosLembretesPage.xaml">
+	    <SubType>Designer</SubType>
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\LembretesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
