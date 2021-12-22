@@ -14,7 +14,11 @@
                     TextColor="White"
                     HorizontalOptions="Center" />
 
-                <ListView x:Name="myListView" VerticalOptions="StartAndExpand">
+                <ListView 
+                    x:Name="myListView" 
+                    VerticalOptions="StartAndExpand" 
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding Lembretes}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -26,7 +30,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Button Text="Todos os lembretes" Clicked="OnTodosUsuariosClicked" />
+                <Button Text="Todos os lembretes" Command="{Binding TodosLembretesCommand}" />
 
             </StackLayout>
         </Frame>
