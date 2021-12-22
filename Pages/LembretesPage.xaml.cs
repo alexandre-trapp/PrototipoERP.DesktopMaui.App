@@ -1,22 +1,30 @@
 ﻿using Microsoft.Maui.Controls;
 using PrototipoERP.DesktopMaui.ViewModels;
+using System;
 
 namespace PrototipoERP.DesktopMaui.Pages
 {
 	public partial class LembretesPage : ContentPage
 	{
+        private LembretesViewModel _lembretesViewModel;
+
         public LembretesPage(string authenticationToken, long usuarioId)
 		{
 			InitializeComponent();
 
-            var lembretesViewModel = new LembretesViewModel(authenticationToken, usuarioId);
-            this.BindingContext = lembretesViewModel;
+            _lembretesViewModel = new LembretesViewModel(authenticationToken, usuarioId);
+            this.BindingContext = _lembretesViewModel;
         }
 
         //public void OnMeuUsuarioClicked(object sender, EventArgs args)
         //{
         //    LembretesPorUsuario();
         //}
+
+        public void OnTodosUsuariosClicked(object sender, EventArgs args)
+        {
+            this.BindingContext = _lembretesViewModel;
+        }
 
         //private void LembretesPorUsuario()
         //{
