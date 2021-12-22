@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Xaml;
 using Microsoft.Maui.Graphics;
 using PrototipoERP.DesktopMaui.DTOs;
 using PrototipoERP.DesktopMaui.Pages;
@@ -6,6 +7,7 @@ using PrototipoERP.DesktopMaui.Services;
 using PrototipoERP.DesktopMaui.ViewModels;
 using System;
 
+[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace PrototipoERP.DesktopMaui
 {
 	public partial class MainPage : ContentPage

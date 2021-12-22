@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using PrototipoERP.DesktopMaui.Models;
 using PrototipoERP.DesktopMaui.Services;
+using Microsoft.Maui.Controls.Xaml;
 
 namespace PrototipoERP.DesktopMaui.Pages
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TodosLembretesPage : ContentPage
     {
         private readonly long _usuarioId;
