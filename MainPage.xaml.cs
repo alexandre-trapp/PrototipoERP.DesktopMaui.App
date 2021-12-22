@@ -41,7 +41,6 @@ namespace PrototipoERP.DesktopMaui
 
 				await Navigation.PushAsync(new LembretesPage(App._tokenAutenticacao, usuarioDto.Id), animated: true);
 			}
-			loginViewModel.EfetuandoLogin = false;
 		}
 	}
 }
