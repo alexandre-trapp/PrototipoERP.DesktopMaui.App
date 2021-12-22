@@ -5,14 +5,14 @@
              Title="Prototipo ERP">
 
     <ScrollView>
-        <Frame BackgroundColor="#BF043055" HasShadow="False">
+        <Frame BackgroundColor="LightGray" HasShadow="False">
             <StackLayout Orientation="Vertical" Spacing="10">
 
                 <Label 
                     Text="Lembretes"
                     FontSize="32"
                     TextColor="White"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Start" />
 
                 <ListView 
                     x:Name="myListView" 
@@ -23,7 +23,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
-                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                    <StackLayout HorizontalOptions="StartAndExpand" Padding="5">
                                         <Label Text="{Binding Texto}" TextColor="Black"/>
                                         <Label Text="{Binding Usuario}" TextColor="Gray"/>
                                         <Label Text="{Binding CriadoEm}" TextColor="Gray"/>
