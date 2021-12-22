@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
 using PrototipoERP.DesktopMaui.DTOs;
 using PrototipoERP.DesktopMaui.Pages;
 using PrototipoERP.DesktopMaui.Services;
@@ -23,8 +24,6 @@ namespace PrototipoERP.DesktopMaui
 
 		private async void OnLoginClicked(object sender, EventArgs e)
 		{
-			await DisplayAlert("Info", "Aguarde, estamos efetuando o login", null);
-
 			var loginViewModel = (this.BindingContext as LoginViewModel);
 			App._tokenAutenticacao = loginViewModel._tokenAuthentication;
 			App._usuarioLogado = loginViewModel.Usuario;
@@ -40,6 +39,7 @@ namespace PrototipoERP.DesktopMaui
 
 				await Navigation.PushAsync(new LembretesPage(App._tokenAutenticacao, usuarioDto.Id), animated: true);
 			}
+			loginViewModel.EfetuandoLogin = false;
 		}
 	}
 }

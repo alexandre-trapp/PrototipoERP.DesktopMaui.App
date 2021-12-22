@@ -12,7 +12,18 @@ namespace PrototipoERP.DesktopMaui.ViewModels
     {
         public Action<string> ExibirAvisoDeLoginInvalido;
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
-        
+
+        private bool efetuandoLogin;
+        public bool EfetuandoLogin
+        {
+            get { return efetuandoLogin; }
+            set
+            {
+                efetuandoLogin = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("EfetuandoLogin"));
+            }
+        }
+
         private string usuario;
         public string Usuario
         {
@@ -20,7 +31,7 @@ namespace PrototipoERP.DesktopMaui.ViewModels
             set
             {
                 usuario = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Email"));
+                PropertyChanged(this, new PropertyChangedEventArgs("Usuario"));
             }
         }
         
@@ -43,6 +54,8 @@ namespace PrototipoERP.DesktopMaui.ViewModels
 
         public void OnSubmit()
         {
+            EfetuandoLogin = true;
+
             var response = AuthenticationLoginService.GetTokenAuthorization(this);
 
             try
@@ -50,6 +63,8 @@ namespace PrototipoERP.DesktopMaui.ViewModels
                 if (response == null)
                 {
                     ExibirAvisoDeLoginInvalido("Falha na integração pra autenticar o usuário.");
+                    EfetuandoLogin = false;
+
                     return;
                 }
 
@@ -57,6 +72,7 @@ namespace PrototipoERP.DesktopMaui.ViewModels
                 {
                     ExibirAvisoDeLoginInvalido($"Falha na integração: Status = {response.StatusCode.ToString()} - " +
                                                $"{response.StatusDescription} - message: {response.ErrorMessage}");
+                    EfetuandoLogin = false;
 
                     return;
                 }
@@ -66,6 +82,8 @@ namespace PrototipoERP.DesktopMaui.ViewModels
                 if (string.IsNullOrWhiteSpace(authenticationResponse.Token))
                 {
                     ExibirAvisoDeLoginInvalido("Falha na autenticação, token de acesso vazio ou inválido.");
+                    EfetuandoLogin = false;
+
                     return;
                 }
 

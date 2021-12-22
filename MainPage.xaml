@@ -36,6 +36,13 @@
                     SemanticProperties.Hint="Efetuar login"
                     HorizontalOptions="Center" />
 
+                <Label 
+                    Text="Efetuando o login, aguarde..."
+                    IsVisible="{Binding EfetuadoLogin}"
+                    FontSize="32"
+                    TextColor="White"
+                    HorizontalOptions="Start" />
+                
                 <Image 
                     Source="dotnet_bot.png"
                     SemanticProperties.Description="Cute dot net bot waving hi to you!"
