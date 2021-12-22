@@ -33,12 +33,13 @@ namespace PrototipoERP.DesktopMaui.ViewModels
             _consultaLembretesService = new ConsultaLembretesServices(authenticationToken);
 
             TodosLembretesCommand = new Command(TodosOsLembretes);
-            Lembretes = new ObservableCollection<LembreteModel>();
+
+            TodosOsLembretes();
         }
 
         public void TodosOsLembretes()
         {
-            Lembretes.Clear();
+            Lembretes = new ObservableCollection<LembreteModel>();
 
             var response = _consultaLembretesService.GetTodosOsLembretes();
 
