@@ -53,9 +53,10 @@ namespace PrototipoERP.DesktopMaui.Pages
                 lembretes.ForEach(x =>
                     AppState.Lembretes.Add(new LembreteModel()
                     {
+                        Texto = x.Texto,
                         UsuarioId = x.UsuarioId,
-                        DataHora = x.DataHora,
-                        Texto = x.Texto
+                        Usuario = $"Criado pelo usuário: {x.Usuario}",
+                        CriadoEm = $"Criado em: {x.DataHora:dd/MM/yyyy HH:mm:ss}"
                     }));
             }
         }

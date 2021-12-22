@@ -9,7 +9,7 @@
             <StackLayout Orientation="Vertical" Spacing="10" CompressedLayout.IsHeadless="true">
 
                 <Label 
-                    Text="Lembretes"
+                    Text="Meus lembretes"
                     FontSize="32"
                     TextColor="White"
                     HorizontalOptions="Start" />
