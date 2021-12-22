@@ -23,7 +23,11 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
-                                    <Label Text="{Binding Texto}" />
+                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                        <Label Text="{Binding Texto}" TextColor="Black"/>
+                                        <Label Text="{Binding Usuario}" TextColor="Gray"/>
+                                        <Label Text="{Binding CriadoEm}" TextColor="Gray"/>
+                                    </StackLayout>
                                 </ViewCell.View>
                             </ViewCell>
                         </DataTemplate>
