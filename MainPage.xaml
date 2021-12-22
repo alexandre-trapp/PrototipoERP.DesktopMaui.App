@@ -38,7 +38,7 @@
 
                 <Label 
                     Text="Efetuando o login, aguarde..."
-                    IsVisible="{Binding EfetuadoLogin}"
+                    IsVisible="{Binding EfetuandoLogin}"
                     FontSize="32"
                     TextColor="White"
                     HorizontalOptions="Start" />
