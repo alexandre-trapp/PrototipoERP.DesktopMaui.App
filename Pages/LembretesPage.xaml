@@ -22,15 +22,24 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <ViewCell.View>
-                                    <Label Text="{Binding Texto}" />
-                                </ViewCell.View>
+                                <Grid x:Name="gridLembretes">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Grid.Row ="1" Grid.Column="0"
+                                        Text="{Binding Texto}"
+                                        TextColor="White"
+                                        HorizontalOptions="CenterAndExpand">
+                                    </Label>
+                                    <Button Text="Todos os lembretes" Command="{Binding TodosLembretesCommand}" />
+                                </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Button Text="Todos os lembretes" Command="{Binding TodosLembretesCommand}" />
 
             </StackLayout>
         </Frame>

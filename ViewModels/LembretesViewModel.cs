@@ -23,7 +23,6 @@ namespace PrototipoERP.DesktopMaui.ViewModels
                 _lembretes = value;
                 OnPropertyChanged();
             }
-
         }
         
         public ICommand TodosLembretesCommand { get; set; }
@@ -58,6 +57,9 @@ namespace PrototipoERP.DesktopMaui.ViewModels
             }
 
             var lembretes = JsonConvert.DeserializeObject<List<LembreteModel>>(response.Content);
+
+            Lembretes = new ObservableCollection<LembreteModel>();
+
             if (lembretes != null && lembretes.Any())
             {
                 lembretes.ForEach(x =>
