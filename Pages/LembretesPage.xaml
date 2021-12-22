@@ -5,7 +5,7 @@
              Title="Prototipo ERP">
 
     <ScrollView>
-        <Frame BackgroundColor="LightGray" HasShadow="False">
+        <Frame BackgroundColor="LightBlue" HasShadow="False">
             <StackLayout Orientation="Vertical" Spacing="10">
 
                 <Label 

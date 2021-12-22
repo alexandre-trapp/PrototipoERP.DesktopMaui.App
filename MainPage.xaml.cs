@@ -23,6 +23,8 @@ namespace PrototipoERP.DesktopMaui
 
 		private async void OnLoginClicked(object sender, EventArgs e)
 		{
+			await DisplayAlert("Info", "Aguarde, estamos efetuando o login", null);
+
 			var loginViewModel = (this.BindingContext as LoginViewModel);
 			App._tokenAutenticacao = loginViewModel._tokenAuthentication;
 			App._usuarioLogado = loginViewModel.Usuario;
