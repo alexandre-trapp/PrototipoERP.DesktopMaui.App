@@ -1,5 +1,7 @@
 ﻿using Microsoft.Maui.Controls;
+using PrototipoERP.DesktopMaui.DTOs;
 using PrototipoERP.DesktopMaui.Pages;
+using PrototipoERP.DesktopMaui.Services;
 using PrototipoERP.DesktopMaui.ViewModels;
 using System;
 
@@ -21,11 +23,19 @@ namespace PrototipoERP.DesktopMaui
 
 		private async void OnLoginClicked(object sender, EventArgs e)
 		{
-			App._tokenAutenticacao = (this.BindingContext as LoginViewModel)._tokenAuthentication;
+			var loginViewModel = (this.BindingContext as LoginViewModel);
+			App._tokenAutenticacao = loginViewModel._tokenAuthentication;
 
 			if (!string.IsNullOrWhiteSpace(App._tokenAutenticacao))
 			{
-				await Navigation.PushAsync(new LembretesPage(App._tokenAutenticacao, 1), animated: true);
+				var usuarioDto = new ConsultaUsuarioService(App._tokenAutenticacao).GetUsuarioId(
+					new UsuarioAuthenticationRequest
+                    {
+						Nome = loginViewModel.Usuario,
+						Senha = loginViewModel.Senha
+					});
+
+				await Navigation.PushAsync(new LembretesPage(App._tokenAutenticacao, usuarioDto.Id), animated: true);
 			}
 		}
 	}

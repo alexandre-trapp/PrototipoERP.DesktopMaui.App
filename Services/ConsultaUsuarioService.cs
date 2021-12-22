@@ -13,19 +13,14 @@ namespace PrototipoERP.DesktopMaui.Services
 
         public UsuarioDto GetUsuarioId(UsuarioAuthenticationRequest usuario)
         {
-            var client = new RestClient($"https://artesanatosampa.com.br/api/usuario");
+            var client = new RestClient($"https://artesanatosampa.com.br/api/usuarios/id");
             var request = new RestRequest(Method.GET);
 
-            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Authorization", $"Bearer {_authenticationToken}");
 
-            var body = JsonConvert.SerializeObject(
-                            new UsuarioAuthenticationRequest
-                            {
-                                Nome = usuario.Nome,
-                                Senha = usuario.Senha
-                            });
+            request.AddParameter("nome", usuario.Nome);
+            request.AddParameter("senha", usuario.Senha);
 
-            request.AddParameter("application/json", body, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
 
             return JsonConvert.DeserializeObject<UsuarioDto>(response.Content);
