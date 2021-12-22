@@ -28,19 +28,20 @@ namespace PrototipoERP.DesktopMaui
 		{
 			var loginViewModel = (this.BindingContext as LoginViewModel);
 			App._tokenAutenticacao = loginViewModel._tokenAuthentication;
+
+			if (string.IsNullOrWhiteSpace(App._tokenAutenticacao))
+				return;
+
 			App._usuarioLogado = loginViewModel.Usuario;
 
-			if (!string.IsNullOrWhiteSpace(App._tokenAutenticacao))
-			{
-				var usuarioDto = new ConsultaUsuarioService(App._tokenAutenticacao).GetUsuarioId(
-					new UsuarioAuthenticationRequest
-                    {
-						Nome = loginViewModel.Usuario,
-						Senha = loginViewModel.Senha
-					});
+			var usuarioDto = new ConsultaUsuarioService(App._tokenAutenticacao).GetUsuarioId(
+				new UsuarioAuthenticationRequest
+				{
+					Nome = loginViewModel.Usuario,
+					Senha = loginViewModel.Senha
+				});
 
-				await Navigation.PushAsync(new LembretesPage(App._tokenAutenticacao, usuarioDto.Id), animated: true);
-			}
+			await Navigation.PushAsync(new LembretesPage(App._tokenAutenticacao, usuarioDto.Id), animated: true);
 		}
 	}
 }

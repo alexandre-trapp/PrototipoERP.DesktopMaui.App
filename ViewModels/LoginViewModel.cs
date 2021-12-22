@@ -43,6 +43,7 @@ namespace PrototipoERP.DesktopMaui.ViewModels
 
         public void OnSubmit()
         {
+            _tokenAuthentication = string.Empty;
             var response = AuthenticationLoginService.GetTokenAuthorization(this);
 
             try
