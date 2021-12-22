@@ -25,6 +25,7 @@ namespace PrototipoERP.DesktopMaui
 		{
 			var loginViewModel = (this.BindingContext as LoginViewModel);
 			App._tokenAutenticacao = loginViewModel._tokenAuthentication;
+			App._usuarioLogado = loginViewModel.Usuario;
 
 			if (!string.IsNullOrWhiteSpace(App._tokenAutenticacao))
 			{

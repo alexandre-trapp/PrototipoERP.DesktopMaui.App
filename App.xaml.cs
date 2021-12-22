@@ -6,6 +6,7 @@ namespace PrototipoERP.DesktopMaui
 	public partial class App : Application
 	{
 		public static string _tokenAutenticacao { get; set; }
+		public static string _usuarioLogado { get; set; }
 
 		public App()
 		{

@@ -30,7 +30,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Button Text="Todos os lembretes" Command="{Binding TodosLembretesCommand}" Clicked="OnTodosUsuariosClicked"/>
+                <Button Text="Todos os lembretes" Clicked="OnTodosUsuariosClicked"/>
 
             </StackLayout>
         </Frame>

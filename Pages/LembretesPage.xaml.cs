@@ -1,62 +1,102 @@
-﻿using Microsoft.Maui.Controls;
-using PrototipoERP.DesktopMaui.ViewModels;
-using System;
+﻿using System;
+using System.Linq;
+using Newtonsoft.Json;
+using Microsoft.Maui.Controls;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using PrototipoERP.DesktopMaui.Models;
+using PrototipoERP.DesktopMaui.Services;
 
 namespace PrototipoERP.DesktopMaui.Pages
 {
-	public partial class LembretesPage : ContentPage
-	{
-        private LembretesViewModel _lembretesViewModel;
+    public partial class LembretesPage : ContentPage
+    {
+        private readonly long _usuarioId;
+        private readonly ConsultaLembretesServices _consultaLembretesService;
 
         public LembretesPage(string authenticationToken, long usuarioId)
-		{
-			InitializeComponent();
+        {
+            InitializeComponent();
 
-            _lembretesViewModel = new LembretesViewModel(authenticationToken, usuarioId);
-            this.BindingContext = _lembretesViewModel;
+            _usuarioId = usuarioId;
+            _consultaLembretesService = new ConsultaLembretesServices(authenticationToken);
+
+            LembretesPorUsuario();
+
+            myListView.ItemsSource = AppState.Lembretes;
         }
 
-        //public void OnMeuUsuarioClicked(object sender, EventArgs args)
-        //{
-        //    LembretesPorUsuario();
-        //}
+        private void LembretesPorUsuario()
+        {
+            AppState.Lembretes = new ObservableCollection<LembreteModel>();
+
+            var response = _consultaLembretesService.GetLembretesPorUsuario(_usuarioId);
+
+            if (response == null)
+            {
+                DisplayAlert("Erro", "Falha na integração pra buscar os lembretes.", "OK");
+                return;
+            }
+
+            if (!response.IsSuccessful)
+            {
+                DisplayAlert("Erro", $"Falha na integração: Status = {response.StatusCode.ToString()} - " +
+                              $"{response.StatusDescription} - message: {response.ErrorMessage}", "OK");
+
+                return;
+            }
+
+            var lembretes = JsonConvert.DeserializeObject<List<LembreteModel>>(response.Content);
+
+            if (lembretes != null && lembretes.Any())
+            {
+                lembretes.ForEach(x =>
+                    AppState.Lembretes.Add(new LembreteModel()
+                    {
+                        Texto = x.Texto,
+                        UsuarioId = x.UsuarioId,
+                        Usuario = $"Criado pelo usuário: {App._usuarioLogado}",
+                        CriadoEm = $"Criado em: {x.DataHora:dd/MM/yyyy HH:mm:ss}"
+                    }));
+            }
+        }
 
         public void OnTodosUsuariosClicked(object sender, EventArgs args)
         {
-            this.BindingContext = _lembretesViewModel;
+            //LembretesPorUsuario();
         }
 
-        //private void LembretesPorUsuario()
-        //{
-        //    AppState.Lembretes = new ObservableCollection<LembreteModel>();
+        private void TodosOsLembretes()
+        {
+            AppState.Lembretes.Clear();
 
-        //    var response = _consultaLembretesService.GetLembretesPorUsuario(_usuarioId);
+            var response = _consultaLembretesService.GetTodosOsLembretes();
 
-        //    if (response == null)
-        //    {
-        //        DisplayAlert("Erro", "Falha na integração pra buscar os lembretes.", "OK");
-        //        return;
-        //    }
+            if (response == null)
+            {
+                DisplayAlert("Erro", "Falha na integração pra buscar os lembretes.", "OK");
+                return;
+            }
 
-        //    if (!response.IsSuccessful)
-        //    {
-        //        DisplayAlert("Erro", $"Falha na integração: Status = {response.StatusCode.ToString()} - " +
-        //                      $"{response.StatusDescription} - message: {response.ErrorMessage}", "OK");
+            if (!response.IsSuccessful)
+            {
+                DisplayAlert("Erro", $"Falha na integração: Status = {response.StatusCode.ToString()} - " +
+                              $"{response.StatusDescription} - message: {response.ErrorMessage}", "OK");
 
-        //        return;
-        //    }
+                return;
+            }
 
-        //    var lembretes = JsonConvert.DeserializeObject<List<LembreteModel>>(response.Content);
-        //    if (lembretes != null && lembretes.Any())
-        //    {
-        //        lembretes.ForEach(x =>
-        //            AppState.Lembretes.Add(new LembreteModel()
-        //            {
-        //                UsuarioId = x.UsuarioId,
-        //                DataHora = x.DataHora,
-        //                Texto = x.Texto
-        //            }));
-        //    }
-        //}
+            var lembretes = JsonConvert.DeserializeObject<List<LembreteModel>>(response.Content);
+            if (lembretes != null && lembretes.Any())
+            {
+                lembretes.ForEach(x =>
+                    AppState.Lembretes.Add(new LembreteModel()
+                    {
+                        UsuarioId = x.UsuarioId,
+                        DataHora = x.DataHora,
+                        Texto = x.Texto
+                    }));
+            }
+        }
     }
 }
