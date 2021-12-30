@@ -11,7 +11,7 @@ namespace PrototipoERP.DesktopMaui.Services
 
         public IRestResponse GetLembretesPorUsuario(long usuarioId)
         {
-            var client = new RestClient($"http://artesanatosampa.com.br/api/usuario/{usuarioId}/lembretes");
+            var client = new RestClient($"https://artesanatosampa.com.br/api/usuario/{usuarioId}/lembretes");
             var request = new RestRequest(Method.GET);
 
             request.AddHeader("Authorization", $"Bearer {_authenticationToken}");
@@ -24,7 +24,7 @@ namespace PrototipoERP.DesktopMaui.Services
 
         public IRestResponse GetTodosOsLembretes()
         {
-            var client = new RestClient($"http://artesanatosampa.com.br/api/lembretes");
+            var client = new RestClient($"https://artesanatosampa.com.br/api/lembretes");
             var request = new RestRequest(Method.GET);
 
             request.AddHeader("Authorization", $"Bearer {_authenticationToken}");
